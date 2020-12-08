@@ -7,17 +7,22 @@ const GuessedWords = (props) => {
     contents = <span data-test="guess-instructions">Guess a five letter word!</span>
   } else {
     const guessedWordRows = props.guessedWords.map((guessedWordObj, i) => (
-      <tr key={i} data-test="guessed-word"><th>{guessedWordObj.guessedWord}</th><th>{guessedWordObj.letterMatchCount}</th></tr>
+      <tr key={i} data-test="guessed-word">
+        <td>{guessedWordObj.guessedWord}</td>
+        <td>{guessedWordObj.letterMatchCount}</td>
+      </tr>
     ))
     contents = (
       <div data-test="guessed-words">
         <h3>Guessed Words</h3>
-        <table>
-          <thead><tr><th>Guess</th><th>Matching Letters</th></tr></thead>
+        <table className="table table-sm">
+          <thead className="thead-light">
+            <tr><th>Guess</th><th>Matching Letters</th></tr>
+          </thead>
+          <tbody>
+            { guessedWordRows }
+          </tbody>
         </table>
-        <tbody>
-          { guessedWordRows }
-        </tbody>
       </div>
     )
   }
