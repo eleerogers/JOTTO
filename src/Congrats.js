@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 export default function Congrats({ success }) {
   return (
-    <div data-test="congrats" className="alert alert-success">
+    <div data-test="congrats" className="alert">
       {
         success
           ? <span data-test="congrats-message">Congroots! You guesssed it!</span>
