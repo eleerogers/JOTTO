@@ -1,5 +1,5 @@
 import {actionTypes} from "../actions";
-import successReducer from "../reducers";
+import successReducer from "./successReducer";
 
 test('returns initial state of false when no action provided', () => {
   const newState = successReducer(undefined, {});
