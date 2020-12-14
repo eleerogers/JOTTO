@@ -2,7 +2,7 @@ import React from 'react';
 import { shallow } from 'enzyme';
 
 import { findByTestAttr, storeFactory } from '../tests/testUtils';
-import Input from './Input';
+import Input, { UnconnectedInput } from './Input';
 
 const setup = (initialState={}) => {
   const store = storeFactory(initialState);
@@ -66,6 +66,23 @@ describe('redux props', () => {
   })
 })
 
-describe('update state', () => {
-  
+describe('guessWord action is correctly called', () => {
+  let guessWordMock, wrapper
+  const guessedWord = 'train';
+  beforeEach(() => {
+    guessWordMock = jest.fn();
+    wrapper = shallow(<UnconnectedInput guessWord={guessWordMock} />)
+    wrapper.setState({ currentGuess: guessedWord })
+    const submitBtn = findByTestAttr(wrapper, 'submit-btn');
+    submitBtn.simulate('click', { preventDefault: () => {}});
+  })
+  test('guessWord runs when submit button is clicked', () => {
+    const guessWordMockCallsLength = guessWordMock.mock.calls.length;
+    expect(guessWordMockCallsLength).toBe(1);
+  })
+  test('guessWord sends correct word from input box', () => {
+    const guessWordArgs = guessWordMock.mock.calls[0]
+    console.log(guessWordArgs);
+    expect(guessWordArgs[0]).toBe(guessedWord);
+  })
 });
