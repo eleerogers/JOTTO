@@ -85,4 +85,8 @@ describe('guessWord action is correctly called', () => {
     console.log(guessWordArgs);
     expect(guessWordArgs[0]).toBe(guessedWord);
   })
+  test('input box clears on submit', () => {
+    const stateAfterSubmit = wrapper.state('currentGuess');
+    expect(stateAfterSubmit).toBe('');
+  })
 });
