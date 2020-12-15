@@ -39,11 +39,11 @@ export class UnconnectedInput extends Component {
             type="text"
             placeholder="enter guess"
             value={this.state.currentGuess}
-            onChange={(e) => {updateGuess(e.target.value)}}
+            onChange={(e) => {this.updateGuess(e.target.value)}}
           />
           <button 
             data-test="submit-btn"
-            className="button button-primary mb-2"
+            className="btn btn-primary mb-2"
             type="submit"
             onClick={this.submitGuessedWord}
           >Submit</button>

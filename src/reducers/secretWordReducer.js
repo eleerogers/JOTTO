@@ -7,5 +7,4 @@ export default function secretWordReducer(state=null, action) {
     default:
       return state;
   }
-  return state;
 }

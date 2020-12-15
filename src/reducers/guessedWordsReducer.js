@@ -6,5 +6,4 @@ export default function guessedWordsReducer(state=[], action) {
     default:
       return state
   }
-  return null;
 }
